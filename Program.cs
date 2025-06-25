@@ -1,9 +1,18 @@
+using InventoryApp.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+// Register Repo
+builder.Services.AddTransient<IInventoryRepository>(provider =>
+    new SqlInventoryRepository(builder.Configuration.GetConnectionString("InventoryDB")));
+
 var app = builder.Build();
+
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

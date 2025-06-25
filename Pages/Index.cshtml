@@ -1,10 +1,46 @@
 ﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
+@model InventoryApp.Pages.IndexModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Inventory System</h2>
+
+<form method="post">
+    <div>
+        <label>Name:</label>
+        <input type="text" asp-for="Name" required />
+    </div>
+    <div>
+        <label>Quantity:</label>
+        <input type="number" asp-for="Quantity" required />
+    </div>
+    <div>
+        <label>Category:</label>
+        <input type="text" asp-for="Category" required />
+    </div>
+    <button type="submit">Add Item</button>
+</form>
+
+<hr />
+
+<h3>Current Inventory</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.InventoryItems)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Quantity</td>
+                <td>@item.Category</td>
+            </tr>
+        }
+    </tbody>
+</table>
