@@ -1,0 +1,19 @@
+# Build artifacts
+bin/
+obj/
+*.user
+*.suo
+
+# .NET artifacts
+**/debug/
+**/release/
+*.dll
+*.exe
+
+# ASP.NET artifacts
+*.log
+
+# VS-specific
+.vscode/
+*.ncrunch*
+.vs/
