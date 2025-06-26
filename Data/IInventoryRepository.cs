@@ -6,5 +6,7 @@ namespace InventoryApp.Data
     {
         void AddItem(InventoryItem item);
         List<InventoryItem> GetItems();
+
+        void DeleteItem(InventoryItem item);
     }
 }

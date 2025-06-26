@@ -49,5 +49,14 @@ namespace InventoryApp.Pages
 
             return RedirectToPage();
         }
+
+        public IActionResult OnPostDelete(object Sender, EventArgs e)
+        {
+
+            string name = Request.Form["name"];
+            var item = new InventoryItem { Name = name };
+            _repo.DeleteItem(item);
+            return RedirectToPage(); // refresh the list
+        }
     }
 }

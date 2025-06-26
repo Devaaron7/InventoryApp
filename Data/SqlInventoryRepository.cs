@@ -20,6 +20,16 @@ namespace InventoryApp.Data
             cmd.ExecuteNonQuery();
         }
 
+        public void DeleteItem(InventoryItem item)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            conn.Open();
+            var cmd = new SqlCommand(
+                "DELETE FROM InventoryItems WHERE Name = @name", conn);
+            cmd.Parameters.AddWithValue("@name", item.Name);
+            cmd.ExecuteNonQuery();
+        }
+
         public List<InventoryItem> GetItems()
         {
             var list = new List<InventoryItem>();
